@@ -94,6 +94,7 @@ class ViewControllerScreen: UIView {
     func ageAnimalInHuman(string: String) {
         guard let number = Double(ageTextField.text ?? "0.0") else { return }
         sizeLabel.text = string
+        
         for animal in AnimalSize.allCases {
             if animal.rawValue == string && animal.rawValue == "Pequeno" {
                 ageHumanLabel.text = String("\(6.0 * number) anos")
@@ -153,7 +154,7 @@ class ViewControllerScreen: UIView {
             ageHumanLabel.topAnchor.constraint(equalTo: sizeLabel.topAnchor, constant: 50),
             ageHumanLabel.leadingAnchor.constraint(equalTo: sizeLabel.leadingAnchor,constant: 20),
             ageHumanLabel.trailingAnchor.constraint(equalTo: sizeLabel.trailingAnchor, constant: -20),
-            ageHumanLabel.heightAnchor.constraint(equalToConstant: 45),
+            ageHumanLabel.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
 }

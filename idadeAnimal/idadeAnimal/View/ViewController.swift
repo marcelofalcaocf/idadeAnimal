@@ -28,7 +28,6 @@ class ViewController: UIViewController {
         viewScreen.delegateTableView(delegate: self, dataSource: self)
         viewScreen.delegateTextField(delegate: self)
     }
-        
 }
 
 extension ViewController: UITableViewDelegate {
