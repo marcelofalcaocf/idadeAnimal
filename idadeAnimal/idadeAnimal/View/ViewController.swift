@@ -11,6 +11,24 @@ enum AnimalSize: String, CaseIterable {
     case pequeno = "Pequeno"
     case medio = "Médio"
     case grande = "Grande"
+    
+    func name() -> String {
+        switch self {
+        case .pequeno: return "Pequeno"
+        case .medio: return "Médio"
+        case .grande: return "Grande"
+        }
+    }
+    
+    var degress: Double {
+        switch self {
+        case .pequeno: return 6.0
+        case .medio: return 7.0
+        case .grande: return 7.5
+        }
+    }
+    
+    
 }
 
 class ViewController: UIViewController {
@@ -32,7 +50,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        animalChosen = AnimalSize.allCases[indexPath.row].rawValue
+        animalChosen = AnimalSize.allCases[indexPath.row].name()
         
         if viewScreen.validateTextFields() {
             guard let animalChosen = animalChosen else { return }
@@ -50,7 +68,8 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: AnimalTableViewCell.identifier, for: indexPath) as? AnimalTableViewCell {
-            cell.setUpCell(data: AnimalSize.allCases[indexPath.row].rawValue)
+            let size = AnimalSize.allCases[indexPath.row].name()
+            cell.setUpCell(data: size)
             return cell
         }
         return UITableViewCell()

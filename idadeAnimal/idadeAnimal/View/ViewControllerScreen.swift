@@ -63,6 +63,14 @@ class ViewControllerScreen: UIView {
         return label
     }()
     
+    lazy var sizeImageView: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named: "porte")
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configBackGroundColor()
@@ -80,6 +88,7 @@ class ViewControllerScreen: UIView {
         addSubview(tableView)
         addSubview(sizeLabel)
         addSubview(ageHumanLabel)
+        addSubview(sizeImageView)
     }
     
     func delegateTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
@@ -96,12 +105,9 @@ class ViewControllerScreen: UIView {
         sizeLabel.text = string
         
         for animal in AnimalSize.allCases {
-            if animal.rawValue == string && animal.rawValue == "Pequeno" {
-                ageHumanLabel.text = String("\(6.0 * number) anos")
-            } else if animal.rawValue == string && animal.rawValue == "Médio" {
-                ageHumanLabel.text = String("\(7.0 * number) anos")
-            } else if animal.rawValue == string && animal.rawValue == "Grande" {
-                ageHumanLabel.text = String("\(7.5 * number) anos")
+            if string == animal.name() {
+                ageHumanLabel.text = String("Seu pet tem \(animal.degress * number) anos humanos")
+                sizeImageView.image = UIImage(named: animal.name())
             }
         }
     }
@@ -154,7 +160,12 @@ class ViewControllerScreen: UIView {
             ageHumanLabel.topAnchor.constraint(equalTo: sizeLabel.topAnchor, constant: 50),
             ageHumanLabel.leadingAnchor.constraint(equalTo: sizeLabel.leadingAnchor,constant: 20),
             ageHumanLabel.trailingAnchor.constraint(equalTo: sizeLabel.trailingAnchor, constant: -20),
-            ageHumanLabel.heightAnchor.constraint(equalToConstant: 45)
+            ageHumanLabel.heightAnchor.constraint(equalToConstant: 45),
+            
+            sizeImageView.topAnchor.constraint(equalTo: ageHumanLabel.topAnchor, constant: 50),
+            sizeImageView.leadingAnchor.constraint(equalTo: ageHumanLabel.leadingAnchor,constant: 20),
+            sizeImageView.trailingAnchor.constraint(equalTo: ageHumanLabel.trailingAnchor, constant: -20),
+            sizeImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
         ])
     }
 }
