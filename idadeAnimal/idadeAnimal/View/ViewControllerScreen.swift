@@ -105,7 +105,7 @@ class ViewControllerScreen: UIView {
         sizeLabel.text = animalSize.name()
         
         for animal in AnimalSize.allCases {
-            if animalSize.name() == animal.name() {
+            if animalSize == animal {
                 ageHumanLabel.text = String("Seu pet tem \(animalSize.degress * number) anos humanos")
                 sizeImageView.image = UIImage(named: animalSize.name())
             }
