@@ -106,8 +106,8 @@ class ViewControllerScreen: UIView {
         
         for animal in AnimalSize.allCases {
             if animalSize.name() == animal.name() {
-                ageHumanLabel.text = String("Seu pet tem \(animal.degress * number) anos humanos")
-                sizeImageView.image = UIImage(named: animal.name())
+                ageHumanLabel.text = String("Seu pet tem \(animalSize.degress * number) anos humanos")
+                sizeImageView.image = UIImage(named: animalSize.name())
             }
         }
     }
@@ -162,7 +162,8 @@ class ViewControllerScreen: UIView {
             ageHumanLabel.trailingAnchor.constraint(equalTo: sizeLabel.trailingAnchor, constant: -20),
             ageHumanLabel.heightAnchor.constraint(equalToConstant: 45),
             
-            sizeImageView.topAnchor.constraint(equalTo: ageHumanLabel.topAnchor, constant: 50),
+//            sizeImageView.topAnchor.constraint(equalTo: ageHumanLabel.topAnchor, constant: 50),
+            sizeImageView.heightAnchor.constraint(equalToConstant: 200),
             sizeImageView.leadingAnchor.constraint(equalTo: ageHumanLabel.leadingAnchor,constant: 20),
             sizeImageView.trailingAnchor.constraint(equalTo: ageHumanLabel.trailingAnchor, constant: -20),
             sizeImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
