@@ -100,12 +100,12 @@ class ViewControllerScreen: UIView {
         ageTextField.delegate = delegate
     }
     
-    func ageAnimalInHuman(string: String) {
+    func ageAnimalInHuman(animalSize: AnimalSize) {
         guard let number = Double(ageTextField.text ?? "0.0") else { return }
-        sizeLabel.text = string
+        sizeLabel.text = animalSize.name()
         
         for animal in AnimalSize.allCases {
-            if string == animal.name() {
+            if animalSize.name() == animal.name() {
                 ageHumanLabel.text = String("Seu pet tem \(animal.degress * number) anos humanos")
                 sizeImageView.image = UIImage(named: animal.name())
             }

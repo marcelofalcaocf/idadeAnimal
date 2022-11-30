@@ -35,7 +35,9 @@ class ViewController: UIViewController {
     
     lazy var viewScreen: ViewControllerScreen = .init()
 
-    var animalChosen: String?
+    //var animalChosen: String?
+    var animalChosen: AnimalSize?
+
     
     override func loadView() {
         self.view = viewScreen
@@ -50,11 +52,11 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        animalChosen = AnimalSize.allCases[indexPath.row].name()
+        animalChosen = AnimalSize.allCases[indexPath.row]
         
         if viewScreen.validateTextFields() {
             guard let animalChosen = animalChosen else { return }
-            viewScreen.ageAnimalInHuman(string: animalChosen)
+            viewScreen.ageAnimalInHuman(animalSize: animalChosen)
         } else {
             viewScreen.noticeToUser()
         }
