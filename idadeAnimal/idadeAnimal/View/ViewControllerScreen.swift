@@ -91,16 +91,16 @@ class ViewControllerScreen: UIView {
         addSubview(sizeImageView)
     }
     
-    func delegateTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+    public func delegateTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
     }
     
-    func delegateTextField(delegate: UITextFieldDelegate) {
+    public func delegateTextField(delegate: UITextFieldDelegate) {
         ageTextField.delegate = delegate
     }
     
-    func ageAnimalInHuman(animalSize: AnimalSize) {
+    public func configAgeAndSize(animalSize: AnimalSize) {
         guard let number = Double(ageTextField.text ?? "0.0") else { return }
         
         sizeLabel.text = animalSize.name()
@@ -108,11 +108,11 @@ class ViewControllerScreen: UIView {
         sizeImageView.image = UIImage(named: animalSize.name())
     }
     
-    func noticeToUser() {
+    public func noticeToUser() {
         ageHumanLabel.text = "Informe a idade do seu pet"
     }
     
-    func reloadTableViewTextField() {
+    public func reloadTableViewTextField() {
         tableView.reloadData()
     }
     

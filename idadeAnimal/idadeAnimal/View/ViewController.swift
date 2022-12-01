@@ -27,17 +27,15 @@ enum AnimalSize: String, CaseIterable {
         case .grande: return 7.5
         }
     }
-    
-    
 }
 
 class ViewController: UIViewController {
     
     lazy var viewScreen: ViewControllerScreen = .init()
-
+    
     //var animalChosen: String?
     var animalChosen: AnimalSize?
-
+    
     
     override func loadView() {
         self.view = viewScreen
@@ -48,6 +46,14 @@ class ViewController: UIViewController {
         viewScreen.delegateTableView(delegate: self, dataSource: self)
         viewScreen.delegateTextField(delegate: self)
     }
+    
+    private func ageAnimalInHuman(animalSize: AnimalSize) {
+        viewScreen.configAgeAndSize(animalSize: animalSize)
+    }
+    
+    private func userError() {
+        viewScreen.noticeToUser()
+    }
 }
 
 extension ViewController: UITableViewDelegate {
@@ -56,9 +62,9 @@ extension ViewController: UITableViewDelegate {
         
         if viewScreen.validateTextFields() {
             guard let animalChosen = animalChosen else { return }
-            viewScreen.ageAnimalInHuman(animalSize: animalChosen)
+            ageAnimalInHuman(animalSize: animalChosen)
         } else {
-            viewScreen.noticeToUser()
+            userError()
         }
     }
 }
