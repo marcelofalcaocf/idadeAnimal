@@ -102,14 +102,10 @@ class ViewControllerScreen: UIView {
     
     func ageAnimalInHuman(animalSize: AnimalSize) {
         guard let number = Double(ageTextField.text ?? "0.0") else { return }
-        sizeLabel.text = animalSize.name()
         
-        for animal in AnimalSize.allCases {
-            if animalSize == animal {
-                ageHumanLabel.text = String("Seu pet tem \(animalSize.degress * number) anos humanos")
-                sizeImageView.image = UIImage(named: animalSize.name())
-            }
-        }
+        sizeLabel.text = animalSize.name()
+        ageHumanLabel.text = String("Seu pet tem \(animalSize.degress * number) anos humanos")
+        sizeImageView.image = UIImage(named: animalSize.name())
     }
     
     func noticeToUser() {
